@@ -1,0 +1,867 @@
+/* doc.css - Custom styles for the Documentation SPA (Simple & Clean) */
+
+/* Custom Elegant Scrollbar for Dark Theme */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    /* Transparent track so it blends perfectly */
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    /* Soft, translucent grey */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+    /* Slightly brighter on hover */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0b0b0b;
+    /* Very dark background */
+    color: rgba(255, 255, 255, 0.82);
+    font-family: apple-regular, graphik-regular, sans-serif;
+    overflow-x: hidden;
+    line-height: 1.7;
+}
+
+/* Layout Wrapper */
+.doc-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 270px;
+    background-color: #0b0b0b;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    /* Subtle border */
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+    padding: 30px 24px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sidebar-header img {
+    height: 35px;
+    filter: invert(100%);
+}
+
+.sidebar-header h1 {
+    font-family: Anton, sans-serif;
+    font-size: 26px;
+    font-weight: normal;
+    margin: 0;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.sidebar-menu {
+    padding: 15px 0 40px;
+}
+
+.menu-category {
+    font-family: apple-bold, sans-serif;
+    font-size: 12px;
+    color: #55b685;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 25px 24px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s;
+}
+
+.menu-category:hover {
+    opacity: 0.8;
+}
+
+.menu-category .chevron {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+    opacity: 0.7;
+}
+
+.menu-category.collapsed .chevron {
+    transform: rotate(-90deg);
+}
+
+.menu-items {
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.menu-items.collapsed {
+    max-height: 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 24px;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    font-size: 14.5px;
+    transition: color 0.2s, background-color 0.2s;
+    cursor: pointer;
+    border-radius: 6px;
+    margin: 2px 12px;
+}
+
+.nav-item:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.nav-item.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.08);
+    /* Flat active state background */
+    font-family: apple-bold, sans-serif;
+}
+
+.nav-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 12px;
+    /* Remove any underlying color tints and make them uniform grey */
+    filter: invert(65%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1) contrast(1);
+    opacity: 0.8;
+}
+
+.nav-item.active .nav-icon,
+.nav-item:hover .nav-icon {
+    /* Pure white for active/hover */
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+
+/* Master Content Area */
+.master-content {
+    flex: 1;
+    margin-left: 270px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
+}
+
+/* Horizontal Wrapper for Content + TOC */
+.flex-content-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.inner-content {
+    padding: 70px 50px 0 70px;
+    max-width: 850px;
+    flex: 1;
+    /* Pushes the footer down naturally */
+}
+
+/* Right TOC Sidebar */
+.toc-container {
+    width: 250px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 70px 20px 70px 0;
+    box-sizing: border-box;
+    margin-left: 10px;
+}
+
+.toc-title {
+    font-family: apple-bold, sans-serif;
+    font-size: 13px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 20px;
+}
+
+.toc-nav {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toc-link {
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color 0.2s, border-color 0.2s;
+    border-left: 2px solid transparent;
+    padding: 6px 0 6px 15px;
+    margin-left: -1px;
+    /* overlap border */
+}
+
+.toc-link:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.toc-link.child {
+    padding-left: 25px;
+    /* Indent sub-sections */
+}
+
+.toc-link.active {
+    color: #55b685;
+    border-left-color: #55b685;
+    /* Simulate boldness without changing element width to prevent layout shift that causes wrapping */
+    text-shadow: 0.1px 0 0 #55b685;
+}
+
+/* Tab Panes */
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Article Styling (Minimalist) */
+.page-category-label {
+    font-family: apple-bold, sans-serif;
+    font-size: 13px;
+    color: #55b685;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 2px;
+}
+
+.page-title {
+    font-family: Anton, sans-serif;
+    font-size: 40px;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.page-subtitle {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 60px;
+}
+
+.doc-section {
+    margin-bottom: 70px;
+}
+
+.doc-section-title {
+    font-family: product-bold, sans-serif;
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.doc-section-desc {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 15px;
+}
+
+.step-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.step-item {
+    display: flex;
+    margin-bottom: 24px;
+    align-items: flex-start;
+}
+
+.step-number {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: apple-bold, sans-serif;
+    font-size: 13px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 20px;
+    margin-top: 2px;
+}
+
+.step-content {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.step-content strong {
+    color: #fff;
+    font-family: apple-bold, sans-serif;
+    font-weight: normal;
+}
+
+.step-content a {
+    color: #55b685;
+    /* Soft modern green/teal for links */
+    text-decoration: none;
+}
+
+.step-content a:hover {
+    text-decoration: underline;
+}
+
+.step-note {
+    margin-top: 10px;
+    background-color: rgba(255, 183, 77, 0.08);
+    /* Soft orange background */
+    padding: 10px 14px;
+    border-left: 3px solid #ffb74d;
+    border-radius: 4px;
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+}
+
+.step-note strong {
+    color: #ffb74d;
+}
+
+.step-note.danger {
+    background-color: rgba(239, 83, 80, 0.08);
+    /* Soft red background */
+    border-left-color: #ef5350;
+}
+
+.step-note.danger strong {
+    color: #ef5350;
+}
+
+.step-note.feature {
+    background-color: rgba(85, 182, 133, 0.08);
+    /* Soft green background */
+    border-left-color: #55b685;
+}
+
+.step-note.feature strong {
+    color: #55b685;
+}
+
+code {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 14px;
+    color: #e0e0e0;
+}
+
+.recommended-badge {
+    font-size: 11px;
+    background-color: rgba(85, 182, 133, 0.15);
+    color: #55b685;
+    border: 1px solid rgba(85, 182, 133, 0.3);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: apple-bold, sans-serif;
+    margin-left: 10px;
+    transform: translateY(-2px);
+    display: inline-block;
+}
+
+/* Hamburger Menu for Mobile */
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    z-index: 1000;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.hamburger svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+}
+
+/* Overlay for Mobile Sidebar */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    z-index: 90;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1200px) {
+    .toc-container {
+        display: none;
+        /* Hide TOC on smaller screens */
+    }
+
+    .inner-content {
+        padding: 60px 50px 0;
+    }
+}
+
+.mobile-nav-hint {
+    display: none;
+    /* Hidden on desktop */
+    align-items: center;
+    gap: 12px;
+    background-color: rgba(85, 182, 133, 0.08);
+    /* slight green tint */
+    padding: 12px 18px;
+    border-radius: 6px;
+    border-left: 3px solid #55b685;
+    margin-top: 20px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.mobile-nav-hint svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+    flex-shrink: 0;
+}
+
+.mobile-nav-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Match actual hamburger button */
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .master-content {
+        margin-left: 0;
+    }
+
+    .inner-content {
+        padding: 80px 24px 0;
+        /* Space for hamburger */
+        max-width: 100%;
+    }
+
+    .mobile-nav-hint {
+        display: flex;
+        /* Show on mobile */
+    }
+}
+
+/* Footer Link Custom overrides */
+.telegram-contain a {
+    color: rgb(0, 119, 255);
+}
+
+/* Custom Header and Footer Lines relative to flex wrapper */
+.doc-top-line {
+    margin-top: 25px;
+    /* Exact 25px margin like buy-account */
+    width: 100%;
+}
+
+.doc-bottom-line {
+    margin-bottom: 25px;
+    /* Symmetrical 25px margin like buy-account */
+    width: 100%;
+}
+
+/* Introduction Poster Gallery */
+.poster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.poster-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+.poster-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.poster-card img {
+    width: 100%;
+    /* aspect-ratio: 2 / 3; removed to prevent forced cropping */
+    object-fit: contain;
+    /* ensures full image is visible without cropping */
+    background-color: #000;
+    /* fallback background if image isn't perfectly tall */
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.poster-title {
+    padding: 12px 10px;
+    font-size: 13px;
+    font-family: product-medium, sans-serif;
+    color: #f5f5f5;
+    text-align: center;
+    line-height: 1.3;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 600px) {
+    .poster-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* ========================================= */
+/* LIGHT MODE OVERRIDES                      */
+/* ========================================= */
+
+html.light-mode body {
+    background-color: #f7f9fc;
+    color: #1a1a1a;
+}
+
+html.light-mode body .sidebar {
+    background-color: #ffffff;
+    border-right-color: rgba(0, 0, 0, 0.08);
+}
+
+html.light-mode ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    /* Visible grey thumb */
+}
+
+html.light-mode ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+    /* Darker grey on hover */
+}
+
+html.light-mode body .sidebar-header h1 {
+    color: #1a1a1a;
+}
+
+html.light-mode body .sidebar-header img {
+    filter: invert(0%);
+}
+
+html.light-mode body .nav-item {
+    color: rgba(0, 0, 0, 0.65);
+}
+
+html.light-mode body .nav-item:hover {
+    color: #000;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+html.light-mode body .nav-item.active {
+    color: #000;
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+html.light-mode body .nav-icon {
+    filter: invert(35%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.6) contrast(1);
+}
+
+html.light-mode body .nav-item.active .nav-icon,
+html.light-mode body .nav-item:hover .nav-icon {
+    filter: brightness(0);
+    /* Pure black */
+}
+
+html.light-mode body .doc-top-line,
+html.light-mode body .doc-bottom-line {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+html.light-mode body .page-title,
+html.light-mode body .doc-section-title,
+html.light-mode body .toc-title {
+    color: #1a1a1a;
+}
+
+html.light-mode body .page-subtitle,
+html.light-mode body .doc-section-desc {
+    color: rgba(0, 0, 0, 0.65);
+}
+
+html.light-mode body .step-number {
+    background-color: rgba(0, 0, 0, 0.08);
+    color: #1a1a1a;
+}
+
+html.light-mode body .step-content {
+    color: #333333;
+}
+
+html.light-mode body .step-content strong {
+    color: #1a1a1a;
+}
+
+html.light-mode body code {
+    background-color: rgba(0, 0, 0, 0.06);
+    color: #d32f2f;
+}
+
+html.light-mode body .step-note {
+    color: rgba(0, 0, 0, 0.85);
+}
+
+html.light-mode body .step-note strong {
+    color: #d87c00;
+}
+
+html.light-mode body .step-note.danger {
+    color: rgba(0, 0, 0, 0.85);
+}
+
+html.light-mode body .step-note.danger strong {
+    color: #d32f2f;
+}
+
+html.light-mode body .step-note.feature {
+    color: rgba(0, 0, 0, 0.85);
+}
+
+html.light-mode body .step-note.feature strong {
+    color: #3e9468;
+}
+
+html.light-mode body .toc-nav {
+    border-left-color: rgba(0, 0, 0, 0.1);
+}
+
+html.light-mode body .toc-link {
+    color: rgba(0, 0, 0, 0.45);
+}
+
+html.light-mode body .toc-link:hover {
+    color: rgba(0, 0, 0, 0.85);
+}
+
+html.light-mode body .toc-link.active {
+    color: #55b685;
+}
+
+html.light-mode body .mobile-nav-hint {
+    background-color: rgba(85, 182, 133, 0.15);
+    color: #222;
+}
+
+html.light-mode body .mobile-nav-icon-wrapper {
+    background-color: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+html.light-mode body .mobile-nav-hint svg {
+    fill: #1a1a1a;
+}
+
+html.light-mode body .poster-card {
+    background-color: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+html.light-mode body .poster-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+html.light-mode body .poster-title {
+    color: #1a1a1a;
+}
+
+html.light-mode body .hamburger {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+html.light-mode body .hamburger svg {
+    fill: #1a1a1a;
+}
+
+html.light-mode body .c-wan {
+    color: #555;
+}
+
+html.light-mode body .sidebar-overlay {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    margin-left: auto;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+html.light-mode body .theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+html.light-mode body .theme-toggle svg {
+    stroke: #1a1a1a;
+}
+
+/* ========================================= */
+/* INLINE STYLE OVERRIDES FOR LIGHT MODE     */
+/* ========================================= */
+
+/* Force dark color on paragraphs with inline white text */
+html.light-mode body .doc-section p[style*="rgba(255,255,255,0.7)"],
+html.light-mode body .doc-section p[style*="rgba(255, 255, 255, 0.7)"] {
+    color: rgba(0, 0, 0, 0.75) !important;
+}
+
+/* Force dark color on descriptive inline links (e.g. Buka Halaman) */
+html.light-mode body a[style*="rgba(255,255,255,0.5)"],
+html.light-mode body a[style*="rgba(255, 255, 255, 0.5)"],
+html.light-mode body a[onmouseout*="rgba(255,255,255,0.5)"] {
+    color: rgba(0, 0, 0, 0.55) !important;
+}
+
+/* Hover state for inline links */
+html.light-mode body a[style*="rgba(255,255,255,0.5)"]:hover,
+html.light-mode body a[onmouseover*="#fff"]:hover {
+    color: #1a1a1a !important;
+}
+
+/* Force dark design on App Download buttons (Unduh Kodi) with inline white bg/text */
+html.light-mode body a[style*="background-color: rgba(255,255,255,0.1)"],
+html.light-mode body a[style*="background-color: rgba(255, 255, 255, 0.1)"] {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+    color: #1a1a1a !important;
+}
+
+/* Hover state for App Download buttons */
+html.light-mode body a[onmouseover*="rgba(255,255,255,0.2)"]:hover {
+    background-color: rgba(0, 0, 0, 0.15) !important;
+}

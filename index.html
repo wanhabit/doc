@@ -1,0 +1,1611 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAN-DB Documentation</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/doc.css">
+    <link rel="icon" href="image/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="image/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon/favicon-16x16.png">
+    <link rel="manifest" href="image/favicon/site.webmanifest">
+
+    <!-- Prevent Theme Flash -->
+    <script>
+        if (localStorage.getItem('wan-db-doc-theme') === 'light') {
+            document.documentElement.classList.add('light-mode');
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Hamburger Menu for Mobile -->
+    <div class="hamburger" id="hamburger-btn">
+        <svg viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="doc-wrapper">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="https://wanhabit.com/" style="text-decoration: none;">
+                    <h1>WAN-DB DOC:33</h1>
+                </a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme" title="Switch Theme">
+                    <svg id="theme-icon-dark" viewBox="0 0 24 24" style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                    <svg id="theme-icon-light" viewBox="0 0 24 24">
+                        <path
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="sidebar-menu">
+                <a class="nav-item active" data-target="introduction">
+                    Introduction
+                </a>
+                <a class="nav-item" data-target="stremio-access">
+                    Quick Access
+                </a>
+
+                <div class="menu-category" onclick="toggleMenu(this)">
+                    <span>Cara Mengunduh</span>
+                    <svg class="chevron" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6z" />
+                    </svg>
+                </div>
+                <div class="menu-items">
+                    <a class="nav-item" data-route="windows" data-target="dl-windows">
+                        <img src="image/windows.svg" class="nav-icon" alt="WIN"> Windows
+                    </a>
+                    <a class="nav-item" data-route="android" data-target="dl-android">
+                        <img src="image/android.svg" class="nav-icon" alt="AND"> Android
+                    </a>
+                    <a class="nav-item" data-route="apple" data-target="dl-apple">
+                        <img src="image/apple.svg" class="nav-icon" alt="APL"> Apple
+                    </a>
+                </div>
+
+                <div class="menu-category" data-route="cara-nonton" onclick="toggleMenu(this)">
+                    <span>Cloud Stream<br>(Nonton Langsung)</span>
+                    <svg class="chevron" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6z" />
+                    </svg>
+                </div>
+                <div class="menu-items">
+                    <a class="nav-item" data-route="windows" data-target="cs-windows">
+                        <img src="image/windows.svg" class="nav-icon" alt="WIN"> Windows
+                    </a>
+                    <a class="nav-item" data-route="android" data-target="cs-android">
+                        <img src="image/android.svg" class="nav-icon" alt="AND"> Android
+                    </a>
+                    <a class="nav-item" data-route="apple" data-target="cs-apple">
+                        <img src="image/apple.svg" class="nav-icon" alt="APL"> Apple
+                    </a>
+                </div>
+
+                <div class="menu-category" onclick="toggleMenu(this)">
+                    <span>Apps & Software</span>
+                    <svg class="chevron" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6z" />
+                    </svg>
+                </div>
+                <div class="menu-items">
+                    <a class="nav-item" data-route="windows" data-target="dla-windows">
+                        <img src="image/windows.svg" class="nav-icon" alt="WIN"> Windows
+                    </a>
+                    <a class="nav-item" data-route="android" data-target="dla-android">
+                        <img src="image/android.svg" class="nav-icon" alt="AND"> Android
+                    </a>
+                    <a class="nav-item" data-route="apple" data-target="dla-apple">
+                        <img src="image/apple.svg" class="nav-icon" alt="APL"> Apple
+                    </a>
+                </div>
+
+                <div class="menu-category" onclick="toggleMenu(this)">
+                    <span>Bantuan Lainnya</span>
+                    <svg class="chevron" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6z" />
+                    </svg>
+                </div>
+                <div class="menu-items">
+                    <a class="nav-item" data-route="app-drives" data-target="app-gdrive">
+                        Drive Desktop & RaiDrive
+                    </a>
+                    <a class="nav-item" data-route="cek-spesifikasi" data-target="app-specs">
+                        Cara Cek Spesifikasi Device
+                    </a>
+                    <a class="nav-item" data-route="temukan-film-terbaru" data-target="app-sort">
+                        Cara Temukan Film Terbaru
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Master Content Area -->
+        <main class="master-content">
+            <div class="line doc-top-line"></div>
+
+            <div class="flex-content-wrapper">
+
+                <!-- Main Content Area -->
+                <div class="main-content">
+                    <div class="inner-content">
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: INTRODUCTION                           -->
+                        <!-- ========================================== -->
+                        <section id="introduction" class="tab-pane active">
+                            <div class="page-category-label">MULAI</div>
+                            <h1 class="page-title">INTRODUCTION</h1>
+                            <div class="page-subtitle">Selamat datang di pusat bantuan (Documentation Hub) WAN-DB.
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="layanan">Kenali Layanan Kami</div>
+                                <p style="color: rgba(255,255,255,0.7); max-width: 650px; line-height: 1.6;">
+                                    WAN-DB (WAN Database) adalah pusat koleksi ribuan pustaka film dan serial premium
+                                    berskala penuh yang tersimpan rapi menggunakan arsitektur Google Drive
+                                    Enterprise.<br><br>
+                                    Halaman dokumentasi ini dibuat untuk memandu Anda memahami berbagai cara cerdas dan
+                                    gampang untuk mengakses database kami, mulai dari sekadar mengunduh, hingga menyulap
+                                    perangkat Anda layaknya sistem Cloud Streaming sekelas Netflix.
+                                </p>
+
+                                <!-- Mobile Instruction Hint -->
+                                <div class="mobile-nav-hint">
+                                    <div class="mobile-nav-icon-wrapper">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                                        </svg>
+                                    </div>
+                                    <div><strong>Pengguna HP/Tablet:</strong> Silakan ketuk ikon tiga garis ini di sudut
+                                        kiri atas layar untuk membuka Menu Navigasi WAN-DB DOC.</div>
+                                </div>
+
+                            </div>
+
+                            <div class="doc-section" style="margin-top: 50px;">
+                                <div class="doc-section-title" data-slug="koleksi">Kenali Koleksi Premium Kami</div>
+                                <div class="doc-section-desc">Nikmati ribuan judul dengan kualitas 4K HDR & Blu-Ray
+                                    murni (No-Watermark).</div>
+
+                                <div class="poster-grid">
+                                    <div class="poster-card">
+                                        <img src="image/Pulp Fiction (1994) 2160p NOWM.jpg" alt="Pulp Fiction (1994)">
+                                        <div class="poster-title">Pulp Fiction (1994)</div>
+                                    </div>
+                                    <div class="poster-card">
+                                        <img src="image/Superman (2025) NOWM_2160P BLU-RAY.png" alt="Superman (2025)">
+                                        <div class="poster-title">Superman (2025)</div>
+                                    </div>
+                                    <div class="poster-card">
+                                        <img src="image/Weapons (2025) NOWM_2160P BLU-RAY.png" alt="Weapons (2025)">
+                                        <div class="poster-title">Weapons (2025)</div>
+                                    </div>
+                                    <div class="poster-card">
+                                        <img src="image/Hamnet (2025) NOWM_2160P BLU-RAY.png" alt="Hamnet (2025)">
+                                        <div class="poster-title">Hamnet (2025)</div>
+                                    </div>
+                                    <div class="poster-card">
+                                        <img src="image/One Battle After Another (2025) 2160P NOWM.jpg"
+                                            alt="One Battle After Another (2025)">
+                                        <div class="poster-title">One Battle After Another (2025)</div>
+                                    </div>
+                                    <div class="poster-card">
+                                        <img src="image/Scream (1996) 2160P NOWM.jpg" alt="Scream (1996)">
+                                        <div class="poster-title">Scream (1996)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: STREMIO EARLY ACCESS                   -->
+                        <!-- ========================================== -->
+                        <section id="stremio-access" class="tab-pane">
+                            <div class="page-category-label">PREMIUM</div>
+                            <h1 class="page-title">QUICK ACCESS</h1>
+                            <div class="page-subtitle">Rekomendasi Mutlak: Nikmati WAN-DB dengan UI tercantik nan mewah
+                                layaknya Netflix!</div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="ikhtisar">Upgrade Pengalaman Anda ke Level
+                                    Tertinggi</div>
+                                <p style="color: rgba(255,255,255,0.7); max-width: 650px; line-height: 1.6;">
+                                    Bosan dengan tampilan folder File Explorer atau menu list kaku?
+                                    <strong>Stremio</strong>
+                                    adalah jawaban bagi Anda yang mendambakan antarmuka (*User Interface*) super
+                                    premium.
+                                    <br><br>
+                                    Dengan aplikasi ini, database WAN-DB disulap sepenuhnya menjadi katalog bioskop
+                                    digital:
+                                    Lengkap dengan <em>cover poster resolusi tinggi</em>, <em>sinopsis detail</em>,
+                                    <em>rating
+                                        IMDB</em>, riwayat tontonan, dan pencarian instan antar Season/Episode serial.
+                                </p>
+
+                                <div style="margin-top: 30px;">
+                                    <a href="https://buy.wanhabit.com" target="_blank"
+                                        style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 28px; background-color: rgba(85, 182, 133, 0.15); border: 1px solid rgba(85, 182, 133, 0.4); color: #55b685; text-decoration: none; border-radius: 6px; font-size: 15px; transition: 0.2s; font-family: apple-bold, sans-serif; cursor: pointer;"
+                                        onmouseover="this.style.backgroundColor='rgba(85, 182, 133, 0.25)'"
+                                        onmouseout="this.style.backgroundColor='rgba(85, 182, 133, 0.15)'">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124.926 124.927"
+                                            style="width: 26px; height: 26px; margin-right: -2px;">
+                                            <defs>
+                                                <linearGradient id="stremio-grad" x1="1" x2=".296" y1="1" y2=".296"
+                                                    gradientUnits="objectBoundingBox">
+                                                    <stop offset="0" stop-color="#1155d9" />
+                                                    <stop offset="1" stop-color="#7b5bf5" />
+                                                </linearGradient>
+                                            </defs>
+                                            <g transform="translate(.001)">
+                                                <rect width="88.336" height="88.336" fill="url(#stremio-grad)" rx="6"
+                                                    transform="rotate(45 31.231 75.4)" />
+                                                <path fill="#fff"
+                                                    d="M83.389 61.658a1 1 0 0 1 0 1.611L54.75 84.334a1 1 0 0 1-1.592-.806V41.399a1 1 0 0 1 1.592-.806Z" />
+                                            </g>
+                                        </svg>
+                                        Dapatkan Quick Access Sekarang &rarr;
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: DOWNLOAD WINDOWS                       -->
+                        <!-- ========================================== -->
+                        <section id="dl-windows" class="tab-pane">
+                            <div class="page-category-label">CARA MENGUNDUH</div>
+                            <h1 class="page-title">MENGUNDUH FILM DI WINDOWS</h1>
+                            <div class="page-subtitle">Pelajari cara mengunduh film dari Google Drive ke PC/Laptop
+                                Windows Anda.
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="browser">Mengunduh di Browser Langsung</div>
+                                <div class="doc-section-desc">Cara paling dasar menggunakan browser web.</div>
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">Buka Google Drive di browser dan login dengan Akun
+                                            database
+                                            film
+                                            WAN-DB Anda
+                                            (...@wanencode.com).</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">Klik bagian <strong>Shared Drive / Drive
+                                                Bersama</strong> di
+                                            menu
+                                            sebelah kiri.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">Masuk ke drive WAN-DB, dan cari folder film yang Anda
+                                            inginkan.
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">Klik kanan pada file/folder dan pilih
+                                            <strong>"Download /
+                                                Unduh"</strong>, atau tekan <strong>Shift + D</strong>.
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">5</div>
+                                        <div class="step-content">Tunggu proses selesai, file akan masuk ke folder
+                                            Download di
+                                            komputer Anda. Enjoy!</div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="gdrive">Menggunakan Google Drive Desktop <span
+                                        class="recommended-badge">Recommended</span></div>
+                                <div class="doc-section-desc">Mengakses dan mengcopy file langsung melalui File Explorer
+                                    Windows.
+                                </div>
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">Unduh Google Drive untuk desktop di <a
+                                                href="https://apps.wanhabit.com/for-windows"
+                                                target="_blank">apps.wanhabit.com</a>.
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">Instal aplikasi dan masuk menggunakan Akun database
+                                            film
+                                            WAN-DB
+                                            Anda
+                                            (...@wanencode.com).</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">Setelah sinkronisasi, buka File Explorer. Klik partisi
+                                            Google
+                                            Drive dengan ikon akun Anda.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">Buka <strong>Shared Drive WAN-DB</strong>. Untuk
+                                            mengunduh,
+                                            cukup
+                                            klik kanan file film lalu pilih <strong>"Copy"</strong>.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">5</div>
+                                        <div class="step-content"><strong>"Paste"</strong> dikoasi penyimpanan lokal
+                                            komputer
+                                            Anda.
+                                            Proses copy/download akan berjalan.</div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="raidrive">Menggunakan RaiDrive</div>
+                                <div class="doc-section-desc">Software penyimpanan awan pihak ketiga untuk Windows.
+                                </div>
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">Buka aplikasi RaiDrive di komputer Windows Anda.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">Tambahkan penyimpanan: <strong>Business > Google
+                                                Shared
+                                                Drive</strong>. Login dengan Akun database film WAN-DB
+                                            (...@wanencode.com).
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">Buka File Explorer, masuk ke partisi RaiDrive yang
+                                            baru saja
+                                            dibuat.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">Cari film, klik kanan <strong>"Copy" (Ctrl +
+                                                C)</strong> lalu
+                                            <strong>"Paste" (Ctrl + V)</strong> di penyimpanan lokal.
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: DOWNLOAD ANDROID                       -->
+                        <!-- ========================================== -->
+                        <section id="dl-android" class="tab-pane">
+                            <div class="page-category-label">CARA MENGUNDUH</div>
+                            <h1 class="page-title">MENGUNDUH FILM DI ANDROID</h1>
+                            <div class="page-subtitle">Cara mengunduh dari aplikasi Google Drive di HP Android.</div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="gdrive">Menggunakan Aplikasi Google Drive
+                                </div>
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">Buka aplikasi Google Drive di perangkat Android Anda
+                                            dan login
+                                            dengan Akun database film WAN-DB (...@wanencode.com).</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">Pilih tab <strong>Drive Bersama / Shared
+                                                Drive</strong> di
+                                            menu
+                                            bawah/atas, dan masuk folder WAN-DB.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">Cari film yang ingin Anda unduh (tekan dan tahan file,
+                                            atau
+                                            tekan
+                                            titik tiga).</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">Pilih opsi <strong>"Unduh / Download"</strong> ke
+                                            perangkat
+                                            Android Anda.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">5</div>
+                                        <div class="step-content">Tunggu notifikasi bar hingga selesai. File akan
+                                            tersimpan di
+                                            memori internal/eksternal.</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: DOWNLOAD APPLE                         -->
+                        <!-- ========================================== -->
+                        <section id="dl-apple" class="tab-pane">
+                            <div class="page-category-label">CARA MENGUNDUH</div>
+                            <h1 class="page-title">MENGUNDUH FILM DI APPLE</h1>
+                            <div class="page-subtitle">Khusus iOS/Mac: Disarankan mengunduh di browser karena aplikasi
+                                iOS tidak
+                                bisa berjalan di latar belakang (background).</div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="browser">Mengunduhnya di Browser (Safari /
+                                    Chrome)</div>
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">Buka browser di iPhone/iPad, cari Google Drive dan
+                                            login
+                                            dengan
+                                            Akun database film WAN-DB Anda.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">Ketuk <strong>Drive Bersama / Shared Drive</strong>
+                                            dan masuk
+                                            ke
+                                            folder koleksi WAN-DB.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">Tekan file film yang diinginkan hingga muncul opsi,
+                                            lalu ketuk
+                                            Ikon Download.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">Tunggu proses unduh Safari/Chrome selesai, file akan
+                                            masuk ke
+                                            aplikasi <strong>Files (Berkas)</strong> di perangkat Anda.</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: CLOUD STREAM WINDOWS                   -->
+                        <!-- ========================================== -->
+                        <section id="cs-windows" class="tab-pane">
+                            <div class="page-category-label">CLOUD STREAM (NONTON LANGSUNG)</div>
+                            <h1 class="page-title">CLOUD STREAM: WINDOWS</h1>
+                            <div class="page-subtitle">Menonton film tanpa perlu mengunduhnya. Langsung streaming dari
+                                cloud!
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="kodi">Menggunakan Aplikasi Kodi</div>
+                                <p class="doc-section-desc">Kodi disarankan jika Anda menginginkan pengalaman menonton
+                                    layaknya
+                                    <strong>Netflix</strong> atau bioskop pribadi di PC Anda, lengkap dengan poster,
+                                    sinopsis,
+                                    dan
+                                    subtitle otomatis. Kami sudah menyediakan alat ekstrak agar instalasinya menjadi
+                                    sangat
+                                    mudah!
+                                </p>
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content"><strong>Persiapan Alat:</strong> Arahkan ke folder
+                                            unduhan
+                                            Kodi
+                                            untuk Windows yang diberikan Admin. Ekstrak file <code>.zip</code> tersebut
+                                            lalu
+                                            buka
+                                            foldernya.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content"><strong>Instalasi Otomatis:</strong> Di dalam folder,
+                                            jalankan
+                                            file bernama <strong><code>Setup.bat</code></strong> (klik 2 kali). Proses
+                                            Command
+                                            Prompt layar hitam putih akan memindahkan profil Kodi secara otomatis. Ikuti
+                                            instruksi
+                                            di layar dan tunggu hingga layarnya tertutup sendiri.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content"><strong>Mulai Aplikasi:</strong> Buka aplikasi Kodi
+                                            dari Start
+                                            Menu Windows Anda. Tampilan awal Anda kini seharusnya sudah dipenuhi oleh
+                                            katalog
+                                            film
+                                            premium WAN-DB!</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content"><strong>Autentikasi Perangkat:</strong> Coba klik
+                                            salah satu
+                                            film
+                                            untuk mencoba menontonnya. Kodi akan menginfokan Anda untuk Login ke Google
+                                            Drive
+                                            (pilih
+                                            <code>Yes</code>). Sebuah <strong>QR Code</strong> dan <strong>Kode
+                                                Angka</strong>
+                                            akan
+                                            muncul di monitor Anda.
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">5</div>
+                                        <div class="step-content"><strong>Tautkan Akun:</strong> Scan QR Code tersebut
+                                            menggunakan
+                                            HP (atau kunjungi manual ke <a href="https://drive-login.herokuapp.com"
+                                                target="_blank">link autentikasi</a>). Ketikkan kode angka dari monitor
+                                            PC ke
+                                            layar
+                                            HP/Browser Anda, lalu pilih login menggunakan <strong>Akun database film
+                                                WAN-DB
+                                                (...@wanencode.com)</strong> Anda dan berikan izin Allow.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">6</div>
+                                        <div class="step-content"><strong>Selesai!</strong> Kembali ke Kodi PC Anda.
+                                            Film
+                                            sekarang
+                                            akan langsung diputar tanpa repot-repot mengunduhnya. Selamat menikmati
+                                            pertunjukkan
+                                            Cloud Streaming berkualitas terbaik di PC/Laptop Anda.</div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="gdrive">Menggunakan Google Drive Desktop <span
+                                        class="recommended-badge">Recommended</span></div>
+                                <div class="doc-section-desc">Paling praktis karena terintegrasi File Explorer dan Media
+                                    Player (VLC / MPC-HC) langsung.</div>
+
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">Pastikan Google Drive Desktop sudah terinstal dan Akun
+                                            database
+                                            film WAN-DB sudah
+                                            tertaut.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">Buka File Explorer, masuk ke partisi <strong>Shared
+                                                Drive
+                                                WAN-DB</strong>.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">
+                                            Cukup <strong>klik 2x (Double Click)</strong> file film tersebut. Secara
+                                            otomatis film akan diputar di Media Player komputer Anda secara streaming!
+                                            <div class="step-note" style="margin-top: 15px; margin-bottom: 0;">
+                                                <strong>Catatan Media Player:</strong> Meskipun Windows sudah memiliki
+                                                pemutar video bawaan, kami <strong>sangat menyarankan</strong> Anda
+                                                untuk mengunduh dan memasang Media Player pihak ketiga seperti
+                                                <strong><a href="#/apps-software/windows/media-player-lainnya">MPC-HC
+                                                        atau VLC</a></strong>. Aplikasi tersebut memberikan Anda fitur
+                                                yang jauh lebih lengkap, termasuk kemampuan untuk mengganti
+                                                <em>Subtitle</em>, memilih jalur <em>Audio</em> ganda, dan membaca
+                                                format MKV premium kami dengan sempurna.
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="step-note feature" style="margin-top: 25px;">
+                                    <strong>Fitur Ekstra Thumbnail Poster (Khusus Pengguna MPC-HC):</strong> Jika Anda
+                                    mengkombinasikan Google Drive Desktop dengan pemutar video <strong>MPC-HC (K-Lite
+                                        Codec Pack)</strong>, Anda bisa melihat poster film layaknya galeri menempel
+                                    langsung di ikon file pada Windows Explorer (ubah view ke <em>Large/Extra Large
+                                        Icons</em>). Hal ini bisa terjadi karena format file kami adalah MKV murni
+                                    premium yang sudah ter-<em>embed</em>/tersematkan metadata poster di dalamnya secara
+                                    otomatis.
+                                    <br><br>Contoh tampilannya di PC Anda nanti akan seperti ini:
+                                    <div class="poster-grid" style="margin-top: 15px; margin-bottom: 5px;">
+                                        <div class="poster-card">
+                                            <img src="image/Pulp Fiction (1994) 2160p NOWM.jpg"
+                                                alt="Pulp Fiction (1994)">
+                                            <div class="poster-title">Pulp Fiction (1994)</div>
+                                        </div>
+                                        <div class="poster-card">
+                                            <img src="image/Superman (2025) NOWM_2160P BLU-RAY.png"
+                                                alt="Superman (2025)">
+                                            <div class="poster-title">Superman (2025)</div>
+                                        </div>
+                                        <div class="poster-card">
+                                            <img src="image/Weapons (2025) NOWM_2160P BLU-RAY.png" alt="Weapons (2025)">
+                                            <div class="poster-title">Weapons (2025)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="raidrive">Menggunakan RaiDrive</div>
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">Pastikan Anda sudah me-mount Google Shared Drive di
+                                            aplikasi
+                                            RaiDrive dan login Akun database film WAN-DB (...@wanencode.com).</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">Buka folder filmnya di File Explorer lewat drive
+                                            virtual
+                                            RaiDrive
+                                            tersebut.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content"><strong>Klik Kanan > Open With</strong> dan pilih
+                                            Media Player
+                                            pilihan Anda (VLC/MPC-HC).</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: CLOUD STREAM ANDROID                   -->
+                        <!-- ========================================== -->
+                        <section id="cs-android" class="tab-pane">
+                            <div class="page-category-label">CLOUD STREAM (NONTON LANGSUNG)</div>
+                            <h1 class="page-title">CLOUD STREAM: ANDROID & TV</h1>
+                            <div class="page-subtitle">Menonton langsung dari Google Drive untuk pengguna Mobile dan
+                                Android TV.
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="kodi">Menggunakan Kodi <span
+                                        class="recommended-badge"
+                                        style="background-color: rgba(255, 255, 255, 0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">Android
+                                        & TV</span> <span class="recommended-badge">Sangat Disarankan</span></div>
+                                <p class="doc-section-desc">Pilihan terbaik untuk <strong>Android TV (Smart TV)</strong>
+                                    atau HP
+                                    Android. Kodi akan merubah TV Anda menjadi penampil khusus film.
+                                    <br><br><strong>Catatan:</strong> Penggunaan pada Android hanya akan menampilkan
+                                    <em>daftar folder dan file</em> (tidak memuat tampilan poster/metadata gambar). Jika
+                                    Anda ingin mendapatkan pengalaman mutlak menonton layaknya aplikasi
+                                    <strong>Netflix</strong> lengkap dengan poster UI cantik, silakan jadilah langganan
+                                    <a href="#/overview/quick-access">Quick Access</a> kami melalui halaman <a
+                                        href="https://buy.wanhabit.com" target="_blank">Pembelian Akses</a>.
+                                </p>
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content"><strong>Instal Aplikasi Asli:</strong> Buka Google
+                                            Play Store
+                                            di
+                                            perangkat Android/TV Anda, cari aplikasi bernama <strong>Kodi</strong>, lalu
+                                            tekan
+                                            Install. Buka aplikasinya pertama kali dan tekan "Izinkan" (Allow) bila
+                                            diminta
+                                            akses
+                                            penyimpanan.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content"><strong>Menambah Sumber (1/2):</strong> Pada halaman
+                                            awal,
+                                            klik
+                                            ikon <strong>Gear (Pengaturan)</strong> di pojok kiri atas. Pilih menu
+                                            <strong>File Manager</strong>, lalu klik dua kali pada tulisan <strong>Add
+                                                Source</strong>.
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content"><strong>Menambah Sumber (2/2):</strong> Akan muncul
+                                            kotak
+                                            dialog.
+                                            Klik tulisan <code>&lt;None&gt;</code>, ketik secara persis alamat
+                                            repositori resmi
+                                            kami: <strong><code>https://wanencode.com/kodi/</code></strong> (harus pakai
+                                            strip/slash
+                                            di belakang). Tekan OK. Nama sumber akan otomatis terisi menjadi
+                                            <strong>"kodi"</strong>, tekan OK lagi untuk menyimpan.
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">
+                                            <strong>Persiapan Salin (1/2):</strong> Antarmuka layar terbagi menjadi
+                                            panel
+                                            direktori
+                                            Kiri dan Kanan. Di panel sebelah <strong>Kanan</strong>, navigasikan dan
+                                            klik masuk
+                                            ke
+                                            dalam <code>Profile Directory</code>. Pastikan Anda sudah masuk ke dalamnya.
+                                            <div class="step-note"><strong>Wajib Diperhatikan:</strong> Panel kanan
+                                                <strong>harus
+                                                    benar-benar masuk</strong> murni ke dalam Profile Directory. Jika
+                                                tidak,
+                                                opsi
+                                                untuk meng-Copy folder pada langkah selanjutnya tidak akan pernah muncul
+                                                di menu
+                                                Kodi.
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">5</div>
+                                        <div class="step-content">
+                                            <strong>Persiapan Salin (2/2):</strong> Beralih ke panel sebelah
+                                            <strong>Kiri</strong>,
+                                            buka folder sumber <code>kodi</code> yang baru ditambahkan. Gunakan remot
+                                            TV,
+                                            tahan lama / klik kanan pada salah satu folder sampai keluar menu opsi,
+                                            pilih
+                                            <strong>Select All</strong>. Tahan lama lagi, lalu kali ini pilih
+                                            <strong>Copy</strong>
+                                            dan konfirmasi <code>Yes</code>.
+                                            <div class="step-note"><strong>Catatan Copy:</strong> Aksi copy ini otomatis
+                                                langsung
+                                                menempelkan (paste) data ke panel kanan, tidak ada tombol paste. Jika
+                                                progres
+                                                mandek
+                                                dan gagal mencapai 100%, mohon lakukan trik <strong>Copy satu-persatu
+                                                    per
+                                                    menu/folder</strong> tanpa menggunakan Select All.</div>
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">6</div>
+                                        <div class="step-content">
+                                            <strong>Mulai Ulang (Restart) Kodi:</strong> Anda berhasil! Tutup sepenuhnya
+                                            aplikasi
+                                            Kodi / Force Close. Lalu buka aplikasinya kembali.
+                                            <div class="step-note"><strong>PENTING:</strong> Tampilan utama awal akan
+                                                terlihat
+                                                sama
+                                                seperti sebelumnya! Anda BUKAN mengecek di halaman awal, melainkan pergi
+                                                ke menu
+                                                <strong>Favourites (Favorit)</strong>. Di sanalah daftar poster kategori
+                                                yang
+                                                tadi
+                                                Anda copy berada.
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">7</div>
+                                        <div class="step-content">
+                                            <strong>Langkah Terakhir - Autentikasi:</strong> Klik salah satu kategori di
+                                            menu
+                                            Favorit. Akan muncul instruksi menginstal *Addon Google Drive*, tekan
+                                            <strong>Yes</strong> sebanyak mungkin. Tunggu sesaat hingga muncul
+                                            <strong>Popup QR
+                                                Code
+                                                & Link Tautan</strong> di TV Anda.
+                                            <div class="step-note danger"><strong>⚠️ Syarat Mutlak Internet:</strong> HP
+                                                (untuk
+                                                scan
+                                                QR/Link) dan TV Anda <strong>WAJIB menggunakan internet dengan alamat IP
+                                                    yang
+                                                    sama
+                                                    persis</strong> (Misal: Gunakan koneksi dari Hotspot HP ke TV, atau
+                                                koneksi
+                                                WiFi
+                                                2.4Ghz yang sama). Jika ada tulisan error "IP Change", segera matikan
+                                                Kodi,
+                                                <strong>Clear Cache & Clear Data</strong> aplikasi Kodi, lalu ulangi
+                                                dengan
+                                                pastikan
+                                                IP Internet sudah sama rata.
+                                            </div>
+                                            <div style="margin-top: 10px;">Lakukan tautan akun di HP tersebut, dan login
+                                                menggunakan
+                                                <strong>Akun database film WAN-DB (...@wanencode.com)</strong> Anda.
+                                                Selesai!
+                                                Klik
+                                                kategorinya lagi, dan seluruh folder judul film akan termuat. Selamat
+                                                menikmati!
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="nplayer">Menggunakan nPlayer <span
+                                        class="recommended-badge"
+                                        style="background-color: rgba(255, 255, 255, 0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">Android</span>
+                                </div>
+                                <div class="doc-section-desc">Pilihan alternatif untuk Android Mobile. Tidak mendukung
+                                    Shortcut.
+                                </div>
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">Download & Install <strong>nPlayer</strong>.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">Pilih menu <strong>Network</strong> di bawah, klik
+                                            <strong>+</strong> dan pilih Google Drive. Login dengan Akun database film
+                                            WAN-DB
+                                            (...@wanencode.com).
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">Klik <strong>Shared Drive</strong> untuk melihat list
+                                            film.
+                                            Anda
+                                            bisa menekan tombol Play untuk langsung streaming film.</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: CLOUD STREAM APPLE                     -->
+                        <!-- ========================================== -->
+                        <section id="cs-apple" class="tab-pane">
+                            <div class="page-category-label">CLOUD STREAM (NONTON LANGSUNG)</div>
+                            <h1 class="page-title">CLOUD STREAM: APPLE</h1>
+                            <div class="page-subtitle">Saksikan koleksi dari iPhone, iPad, dan Apple TV Anda dengan
+                                mudah.</div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="infuse">Menggunakan Infuse <span
+                                        class="recommended-badge">Apple Top Pick</span></div>
+                                <div class="doc-section-desc">Infuse membaca metadata poster dengan sangat elegan.</div>
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">Unduh aplikasi <strong>Infuse</strong> di App Store.
+                                            Buka
+                                            aplikasinya.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">Di menu bawah klik <strong>Pengaturan > Add
+                                                Files</strong>.
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">Klik <strong>Tambahkan (Add) > Google Drive</strong>.
+                                            Login
+                                            menggunakan Akun database film WAN-DB (...@wanencode.com).</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">Masuk ke folder "Team Drives", lalu klik tanda Bintang
+                                            (Favorite)
+                                            pada setiap folder kategori film wanhabit.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">5</div>
+                                        <div class="step-content">Kembali ke halaman utama, dan biarkan Infuse menarik
+                                            Metadata.
+                                            Enjoy streaming!</div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="nplayer">Menggunakan nPlayer / nPlayer Lite
+                                </div>
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">Buka nPlayer iOS, pergi ke menu
+                                            <strong>Network</strong> lalu
+                                            tekan <strong>+</strong>.
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">Tambahkan Akun database film WAN-DB
+                                            (...@wanencode.com). Masuk
+                                            ke
+                                            <strong>Shared
+                                                Drive</strong> untuk melihat direktori film.
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">Tahan file dan "Select All", lalu tekan "Playlist"
+                                            untuk
+                                            menyimpannya sebagai kumpulan tontonan lokal.</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: DLA WINDOWS                            -->
+                        <!-- ========================================== -->
+                        <section id="dla-windows" class="tab-pane">
+                            <div class="page-category-label">APPS & SOFTWARE</div>
+                            <h1 class="page-title">APPS & SOFTWARE WINDOWS</h1>
+                            <div class="page-subtitle">Daftar perangkat lunak Media Player & Virtual Drive untuk OS
+                                Windows.
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="kodi"><img src="image/kodi.svg"
+                                        style="height: 24px; vertical-align: middle; margin-right: 10px;" alt="Kodi">
+                                    KODI</div>
+                                <div class="doc-section-desc">Mendukung koneksi langsung Cloud Streaming. Media Player
+                                    gratis
+                                    interaktif yang mengubah PC Anda menjadi sistem bioskop modern sesungguhnya.</div>
+                                <a href="../apps-software/for-windows/kodi-windows/"
+                                    style="display: inline-block; padding: 10px 20px; background-color: rgba(255,255,255,0.1); color: #fff; text-decoration: none; border-radius: 6px; font-size: 14px; transition: 0.2s;"
+                                    onmouseover="this.style.backgroundColor='rgba(255,255,255,0.2)'"
+                                    onmouseout="this.style.backgroundColor='rgba(255,255,255,0.1)'">Buka Halaman Unduh
+                                    Kodi &rarr;</a>
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="virtual-drive">Aplikasi Virtual Drive</div>
+                                <div class="doc-section-desc">Pondasi utama agar film di Cloud (Google Drive) bisa
+                                    dibaca layaknya hardisk internal (Local Drive) oleh PC Anda. Pilihlah salah satu.
+                                </div>
+
+                                <ul class="step-list" style="margin-top: 20px;">
+                                    <li class="step-item"
+                                        style="border: none; padding: 10px 0; align-items: center; justify-content: flex-start;">
+                                        <img src="../apps-software/for-windows/image/gdrive.svg"
+                                            style="height: 38px; width: 38px; margin-right: 15px;" alt="GDrive">
+                                        <div class="step-content">
+                                            <strong>Google Drive Desktop</strong> <span class="recommended-badge"
+                                                style="font-size: 10px; padding: 2px 6px; margin-left: 5px;">Paling
+                                                Disarankan</span><br>
+                                            <a href="https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe"
+                                                target="_blank"
+                                                style="display: inline-block; margin-top: 5px; font-size: 13.5px;">Unduh
+                                                Google Drive (.exe)</a>
+                                        </div>
+                                    </li>
+                                    <li class="step-item"
+                                        style="border: none; padding: 10px 0; align-items: center; justify-content: flex-start;">
+                                        <img src="../apps-software/for-windows/image/raidrive.svg"
+                                            style="height: 38px; width: 38px; margin-right: 15px; border-radius: 8px;"
+                                            alt="RaiDrive">
+                                        <div class="step-content">
+                                            <strong>RaiDrive</strong><br>
+                                            <a href="https://app.raidrive.com/RaiDrive_2023.9.70_x64.exe"
+                                                target="_blank"
+                                                style="display: inline-block; margin-top: 5px; font-size: 13.5px;">Unduh
+                                                RaiDrive (.exe)</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="doc-section">
+                                    <div class="doc-section-title" data-slug="player-lain">Media Player Lainnya</div>
+                                    <div class="doc-section-desc">Syarat Mutlak: Wajib memasang software Virtual Drive
+                                        (GDrive/RaiDrive) di PC Anda agar opsi player di bawah ini bisa menayangkan film
+                                        dari database Cloud.</div>
+
+                                    <ul class="step-list" style="margin-top: 20px;">
+                                        <li class="step-item"
+                                            style="border: none; padding: 10px 0; align-items: center; justify-content: flex-start;">
+                                            <img src="image/mpchc.svg"
+                                                style="height: 38px; width: 38px; margin-right: 15px;" alt="MPC">
+                                            <div class="step-content">
+                                                <strong>Media Player Classic (MPC-HC)</strong><br>
+                                                <a href="https://files2.codecguide.com/K-Lite_Codec_Pack_1800_Full.exe"
+                                                    target="_blank"
+                                                    style="display: inline-block; margin-top: 5px; font-size: 13.5px;">Unduh
+                                                    Instalasi
+                                                    (.exe)</a>
+                                            </div>
+                                        </li>
+                                        <li class="step-item"
+                                            style="border: none; padding: 10px 0; align-items: center; justify-content: flex-start;">
+                                            <img src="image/vlc.svg"
+                                                style="height: 38px; width: 38px; margin-right: 15px;" alt="VLC">
+                                            <div class="step-content">
+                                                <strong>VLC Media Player</strong><br>
+                                                <a href="https://mirror.nevacloud.com/applications/videolan/vlc/3.0.20/win32/vlc-3.0.20-win32.exe"
+                                                    target="_blank"
+                                                    style="display: inline-block; margin-top: 5px; font-size: 13.5px;">Unduh
+                                                    Instalasi
+                                                    (.exe)</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: DLA ANDROID                          -->
+                        <!-- ========================================== -->
+                        <section id="dla-android" class="tab-pane">
+                            <div class="page-category-label">APPS & SOFTWARE</div>
+                            <h1 class="page-title">APPS UNTUK ANDROID / TV</h1>
+                            <div class="page-subtitle">Daftar aplikasi untuk Smartphone Android & Android TV.</div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="kodi"><img src="image/kodi.svg"
+                                        style="height: 24px; vertical-align: middle; margin-right: 10px;" alt="Kodi">
+                                    KODI <span class="recommended-badge"
+                                        style="background-color: rgba(255, 255, 255, 0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">Android
+                                        & TV</span> <span class="recommended-badge">Sangat Disarankan</span></div>
+                                <div class="doc-section-desc">Mendukung koneksi langsung Cloud Streaming tanpa hambatan.
+                                    Silakan
+                                    pilih panduan unduhnya sesuai jenis perangkat Anda:</div>
+
+                                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                                    <a href="../apps-software/for-android-androidtv/kodi-android/"
+                                        style="display: inline-block; padding: 10px 20px; background-color: rgba(255,255,255,0.1); color: #fff; text-decoration: none; border-radius: 6px; font-size: 14px; transition: 0.2s;"
+                                        onmouseover="this.style.backgroundColor='rgba(255,255,255,0.2)'"
+                                        onmouseout="this.style.backgroundColor='rgba(255,255,255,0.1)'">Unduh Kodi untuk
+                                        <b>HP
+                                            Android</b> &rarr;</a>
+                                    <a href="../apps-software/for-android-androidtv/kodi-androidtv/"
+                                        style="display: inline-block; padding: 10px 20px; background-color: rgba(85, 182, 133, 0.15); border: 1px solid rgba(85, 182, 133, 0.3); color: #55b685; text-decoration: none; border-radius: 6px; font-size: 14px; transition: 0.2s; font-family: apple-bold, sans-serif;">Unduh
+                                        Kodi untuk <b>Android TV</b> &rarr;</a>
+                                </div>
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="nplayer"><img src="image/nplayer.svg"
+                                        style="height: 24px; vertical-align: middle; margin-right: 10px;" alt="NPlayer">
+                                    NPLAYER <span class="recommended-badge"
+                                        style="background-color: rgba(255, 255, 255, 0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">Android</span>
+                                </div>
+                                <div class="doc-section-desc">Aplikasi pemutar alternatif (Premium / Berbayar) yang
+                                    sangat
+                                    ringan
+                                    dan mulus untuk Android. Mendukung Cloud Streaming secara langsung.</div>
+                                <a href="../apps-software/for-android-androidtv/nplayer-android/"
+                                    style="display: inline-block; padding: 10px 20px; background-color: rgba(255,255,255,0.1); color: #fff; text-decoration: none; border-radius: 6px; font-size: 14px; transition: 0.2s;"
+                                    onmouseover="this.style.backgroundColor='rgba(255,255,255,0.2)'"
+                                    onmouseout="this.style.backgroundColor='rgba(255,255,255,0.1)'">Buka Halaman nPlayer
+                                    &rarr;</a>
+                            </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: DLA APPLE                            -->
+                        <!-- ========================================== -->
+                        <section id="dla-apple" class="tab-pane">
+                            <div class="page-category-label">APPS & SOFTWARE</div>
+                            <h1 class="page-title">APPS UNTUK APPLE DEVICE</h1>
+                            <div class="page-subtitle">Aplikasi streaming untuk ekosistem Apple (iOS/iPad/Mac).</div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="infuse"><img src="image/infuse.svg"
+                                        style="height: 24px; vertical-align: middle; margin-right: 10px;" alt="Infuse">
+                                    INFUSE <span class="recommended-badge">Sangat Disarankan</span></div>
+                                <div class="doc-section-desc">Mendukung integrasi <strong>Metadata Poster Film</strong>
+                                    secara
+                                    sempurna! Player paling premium untuk pengguna Apple, menjamin kehalusan gambar dan
+                                    UI super
+                                    elegan.</div>
+                                <a href="../apps-software/for-apple/infuse/"
+                                    style="display: inline-block; padding: 10px 20px; background-color: rgba(255,255,255,0.1); color: #fff; text-decoration: none; border-radius: 6px; font-size: 14px; transition: 0.2s;"
+                                    onmouseover="this.style.backgroundColor='rgba(255,255,255,0.2)'"
+                                    onmouseout="this.style.backgroundColor='rgba(255,255,255,0.1)'">Lihat Panduan Infuse
+                                    &rarr;</a>
+                            </div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="nplayer"><img src="image/nplayer.svg"
+                                        style="height: 24px; vertical-align: middle; margin-right: 10px;" alt="NPlayer">
+                                    NPLAYER</div>
+                                <div class="doc-section-desc">Aplikasi pemutar populer (Berbayar) yang ringan dan
+                                    praktis untuk
+                                    dihubungkan dengan Google Drive, namun tidak menampilkan poster film.</div>
+                                <a href="../apps-software/for-apple/nplayer-apple/"
+                                    style="display: inline-block; padding: 10px 20px; background-color: rgba(255,255,255,0.1); color: #fff; text-decoration: none; border-radius: 6px; font-size: 14px; transition: 0.2s;"
+                                    onmouseover="this.style.backgroundColor='rgba(255,255,255,0.2)'"
+                                    onmouseout="this.style.backgroundColor='rgba(255,255,255,0.1)'">Buka Halaman nPlayer
+                                    Apple
+                                    &rarr;</a>
+                            </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: GDrive & Raidrive Apps                 -->
+                        <!-- ========================================== -->
+                        <section id="app-gdrive" class="tab-pane">
+                            <div class="page-category-label">BANTUAN LAINNYA</div>
+                            <h1 class="page-title">APP DRIVES</h1>
+                            <div class="page-subtitle">Penjelasan terkait Google Drive Desktop dan RaiDrive untuk
+                                Windows.</div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="rangkuman">Rangkuman Software Drive</div>
+                                <div class="doc-section-desc">Untuk mengoptimalkan pengalaman menonton Cloud Stream di
+                                    PC, wajib
+                                    menggunakan Virtual Drive agar film bisa dimainkan di Media Player terbaik.</div>
+                                <p style="color: rgba(255,255,255,0.7); max-width: 650px; line-height: 1.6;">
+                                    <strong>Google Drive Desktop</strong> menempelkan Drive langsung ke sistem Windows
+                                    Anda.
+                                    Sinkronisasi sempurna dengan Shortcut. Ini adalah yang paling disarankan.<br><br>
+                                    <strong>RaiDrive</strong> adalah perangkat lunak pihak ketiga yang mengemulasikan
+                                    Drive Anda
+                                    melalui protokol koneksi jaringan. Berfungsi sangat baik sebagai alternatif ringan
+                                    namun
+                                    tidak
+                                    mendukung pembacaan file bertipe 'Shortcut' Google Drive.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: Cek Spesifikasi                        -->
+                        <!-- ========================================== -->
+                        <section id="app-specs" class="tab-pane">
+                            <div class="page-category-label">BANTUAN LAINNYA</div>
+                            <h1 class="page-title">CEK SPESIFIKASI OS</h1>
+                            <div class="page-subtitle">Cara mengecek Windows 32-bit atau 64-bit untuk kelancaran install
+                                Kodi/Raidrive.</div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="langkah">Langkah-langkah Pengecekan OS</div>
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">Buka File Explorer Windows Anda.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">Pada tulisan <strong>"This PC" / "My
+                                                Computer"</strong>
+                                            (biasanya
+                                            di kiri), klik Kanan Mouse.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">Pilih opsi <strong>Properties</strong>.</div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">Pada jendela Settings "About" yang muncul, lihat baris
+                                            <strong>"System Type"</strong>.
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">5</div>
+                                        <div class="step-content">Disana akan tertulis apakah komputer Anda menggunakan
+                                            <em>64-bit
+                                                operating system</em> atau <em>32-bit operating system</em>. Sesuaikan
+                                            installer
+                                            aplikasi Anda dengan arsitektur tersebut agar tidak error!
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW: Sort By Modified                       -->
+                        <!-- ========================================== -->
+                        <section id="app-sort" class="tab-pane">
+                            <div class="page-category-label">BANTUAN LAINNYA</div>
+                            <h1 class="page-title">CARA TEMUKAN FILM TERBARU</h1>
+                            <div class="page-subtitle">Panduan wajib agar Update Film / Episode Series terbaru selalu
+                                muncul di urutan teratas.</div>
+
+                            <div class="doc-section">
+                                <div class="doc-section-title" data-slug="urutkan">Wajib: Urutkan Berdasarkan 'Date
+                                    Modified'</div>
+                                <div class="doc-section-desc">Secara default, Google Drive dan File Explorer di
+                                    Windows/Apple mengurutkan file berdasarkan Nama (Abjad A-Z). Karena kami mengupdate
+                                    film setiap hari, Anda <strong style="color: #fff">wajib mengubah urutannya</strong>
+                                    agar film yang baru kami tambahkan tampil paling atas.</div>
+
+                                <ul class="step-list">
+                                    <li class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">
+                                            <strong>Jika menonton via Browser:</strong><br>
+                                            Buka folder film di Google Drive. Di pojok kanan atas daftar file, klik
+                                            tombol <strong>"Name" / "Nama"</strong> lalu ubah menjadi <strong>"Last
+                                                modified" / "Terakhir diubah"</strong>.
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">
+                                            <strong>Jika menonton via Windows (Drive Desktop / RaiDrive):</strong><br>
+                                            Buka folder di File Explorer. Klik Kanan di area yang kosong &rarr; pilih
+                                            <strong>Sort by</strong> &rarr; pilih <strong>Date modified</strong>.
+                                            Pastikan urutannya <strong>Descending</strong> (Terbaru ke Terlama).
+                                        </div>
+                                    </li>
+                                    <li class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">
+                                            <strong>Jika menonton via Aplikasi (Infuse / Kodi / nPlayer):</strong><br>
+                                            Masuk ke pengaturan / opsi urutan (Sort) di dalam aplikasi tersebut, dan
+                                            ubah pengurutannya menjadi <strong>Date / Time / Date Added</strong>.
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="step-note feature" style="margin-top: 25px;">
+                                    Tahapan ini sangat krusial, terutama bagi Anda yang mengikuti serial TV *On-Going*
+                                    (Berskambung). File episode baru yang kami tambahkan akan langsung bertengger di
+                                    paling atas berkat fitur *Date Modified* ini.
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Footer Contact -->
+                        <div class="telegram-contain">
+                            <div class="suggest-media">Ikuti <a href="https://notification.wanhabit.com/">notifikasi</a>
+                                kami<br>untuk update
+                                film terbaru</div>
+                            <div class="c-wan">&copy;<span class="current-year"></span> WAN&trade;</div>
+                        </div>
+
+                    </div> <!-- End inner-content -->
+                </div> <!-- End main-content -->
+
+                <!-- Right TOC Sidebar -->
+                <aside class="toc-container" id="toc-container">
+                    <div class="toc-title">On this page</div>
+                    <div class="toc-nav" id="toc-nav">
+                        <!-- Dynamically Populated -->
+                    </div>
+                </aside>
+
+            </div> <!-- End flex-content-wrapper -->
+
+            <div class="line-footer doc-bottom-line"></div>
+        </main>
+    </div>
+
+    <script>
+        // Sidebar Accordion Menu Toggle
+        function toggleMenu(element) {
+            element.classList.toggle('collapsed');
+            const menuItems = element.nextElementSibling;
+            if (menuItems && menuItems.classList.contains('menu-items')) {
+                menuItems.classList.toggle('collapsed');
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Set Copyright Year
+            const yearElements = document.querySelectorAll('.current-year');
+            const currentYear = new Date().getFullYear();
+            yearElements.forEach(element => element.textContent = currentYear);
+
+            // ----------------------------------------------------------------
+            // 1. ROUTING SETUP
+            // ----------------------------------------------------------------
+            function slugify(text) {
+                return text.toString().toLowerCase()
+                    .replace(/\s+/g, '-')           // Replace spaces with -
+                    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+                    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+                    .replace(/^-+/, '')             // Trim - from start of text
+                    .replace(/-+$/, '');            // Trim - from end of text
+            }
+
+            const routes = {};        // e.g. "cara-mengunduh/windows" -> "dl-windows"
+            const reverseRoutes = {}; // e.g. "dl-windows" -> "cara-mengunduh/windows"
+
+            let currentCategoryText = "overview";
+            document.querySelectorAll('.sidebar-menu .menu-category, .sidebar-menu .nav-item').forEach(el => {
+                if (el.classList.contains('menu-category')) {
+                    // Extract text ONLY from the span, ignoring the SVG chevron
+                    const spanEl = el.querySelector('span');
+                    currentCategoryText = spanEl ? spanEl.innerText : el.innerText;
+                } else if (el.classList.contains('nav-item')) {
+                    const targetId = el.getAttribute('data-target');
+                    // Extract text content cleanly (ignoring img alt text like WIN, AND)
+                    let textNodes = Array.from(el.childNodes).filter(node => node.nodeType === Node.TEXT_NODE);
+                    let rawText = textNodes.map(n => n.textContent).join(' ').trim();
+                    if (!rawText) rawText = el.innerText.replace('WIN', '').replace('AND', '').replace('APL', '').trim(); // fallback
+
+                    const categorySlug = el.parentElement.previousElementSibling.getAttribute('data-route') || slugify(currentCategoryText);
+                    const itemSlug = el.getAttribute('data-route') || slugify(rawText);
+                    const path = categorySlug + '/' + itemSlug;
+                    routes[path] = targetId;
+                    reverseRoutes[targetId] = path;
+                }
+            });
+
+            // Single Page Application Routing Logic
+            const navItems = document.querySelectorAll('.nav-item');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            const hamburger = document.getElementById('hamburger-btn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            let isProgrammaticScroll = false;
+
+            function switchTab(targetId, sectionSlug = null, updateUrl = true) {
+                // Reset Active states
+                navItems.forEach(item => item.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                // Set new Active
+                const activeNav = document.querySelector(`.nav-item[data-target="${targetId}"]`);
+                const activePane = document.getElementById(targetId);
+
+                if (activeNav && activePane) {
+                    activeNav.classList.add('active');
+                    activePane.classList.add('active');
+
+                    if (updateUrl && reverseRoutes[targetId]) {
+                        let hash = '#/' + reverseRoutes[targetId];
+                        if (sectionSlug) hash += '/' + sectionSlug;
+                        history.pushState({ targetId, sectionSlug }, null, hash);
+                    }
+
+                    if (!sectionSlug) {
+                        // Flag as programmatic so scrollSpy doesn't instantly overwrite the clean route we just pushed
+                        isProgrammaticScroll = true;
+                        window.scrollTo(0, 0);
+                        setTimeout(() => { isProgrammaticScroll = false; }, 800);
+                    }
+                }
+            }
+
+            function updateTOC(targetId, activeSectionSlug = null) {
+                const activePane = document.getElementById(targetId);
+                const tocNav = document.getElementById('toc-nav');
+                if (!activePane || !tocNav) return;
+
+                tocNav.innerHTML = ''; // Clear previous TOC
+
+                const sectionTitles = activePane.querySelectorAll('.doc-section-title, .page-title');
+                if (sectionTitles.length === 0) {
+                    tocNav.innerHTML = '<span class="toc-link">Overview</span>';
+                    return;
+                }
+                const basePath = reverseRoutes[targetId] || targetId; // Fallback to targetId if route mapping failed
+
+                sectionTitles.forEach((titleElem, index) => {
+                    const isMainTitle = titleElem.classList.contains('page-title');
+
+                    // Read existing data-slug, if any
+                    let existingSlug = titleElem.getAttribute('data-slug');
+                    let sectionSlug = '';
+
+                    if (existingSlug && existingSlug.trim() !== '') {
+                        sectionSlug = existingSlug;
+                    } else {
+                        let rawContent = titleElem.innerText.replace('Sangat Disarankan', '').replace(/\s*(\(.*?\))/g, '').trim();
+                        sectionSlug = slugify(rawContent);
+                    }
+
+                    // Create ID if missing
+                    if (!titleElem.id) {
+                        titleElem.id = `${targetId}-${sectionSlug}`;
+                    }
+
+                    // We store the slug as a data attribute for the scrollspy
+                    titleElem.setAttribute('data-slug', isMainTitle ? '' : sectionSlug);
+
+                    const link = document.createElement('a');
+                    if (isMainTitle) {
+                        link.href = `#/${basePath}`;
+                        link.setAttribute('data-slug', ''); // Empty slug for main title
+                    } else {
+                        link.href = `#/${basePath}/${sectionSlug}`;
+                        link.setAttribute('data-slug', sectionSlug);
+                    }
+
+                    link.className = 'toc-link';
+                    link.setAttribute('data-target-id', titleElem.id);
+
+                    // Add indent class for sub-sections
+                    if (titleElem.classList.contains('doc-section-title')) {
+                        link.classList.add('child');
+                    }
+
+                    // Format text content: remove badges, and put parenthesis content on a new line
+                    let text = titleElem.innerText
+                        .replace('Sangat Disarankan', '')
+                        .replace(/\s*(\(.*?\))/g, '<br><span style="font-size: 11.5px; opacity: 0.7;">$1</span>')
+                        .trim();
+                    link.innerHTML = text;
+
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        isProgrammaticScroll = true;
+
+                        // Push URL - if it's the main title, push without slug
+                        const slugToPush = isMainTitle ? null : sectionSlug;
+                        history.pushState({ targetId, sectionSlug: slugToPush }, null, link.href);
+
+                        // Highlight manually to avoid scrollspy delay
+                        document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+
+                        // Scroll considering some top offset
+                        const y = titleElem.getBoundingClientRect().top + window.scrollY - 30;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+
+                        setTimeout(() => { isProgrammaticScroll = false; }, 800);
+                    });
+
+                    tocNav.appendChild(link);
+                });
+
+                if (activeSectionSlug) {
+                    // Scroll to specific section if requested from URL
+                    const targetSection = Array.from(sectionTitles).find(el => el.getAttribute('data-slug') === activeSectionSlug);
+                    if (targetSection) {
+                        isProgrammaticScroll = true;
+                        setTimeout(() => {
+                            const y = targetSection.getBoundingClientRect().top + window.scrollY - 30;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                            updateScrollSpy();
+                            setTimeout(() => { isProgrammaticScroll = false; }, 800);
+                        }, 100);
+                    } else {
+                        updateScrollSpy();
+                    }
+                } else {
+                    updateScrollSpy(); // Initial highlight
+                }
+            }
+
+            // Scroll Spy Logic
+            let lastReportedSlug = null;
+            function updateScrollSpy() {
+                const activePane = document.querySelector('.tab-pane.active');
+                if (!activePane) return;
+
+                const sectionTitles = activePane.querySelectorAll('.doc-section-title, .page-title');
+                let currentElem = null;
+
+                // Find the first heading that is near the top
+                for (let i = 0; i < sectionTitles.length; i++) {
+                    const titleElem = sectionTitles[i];
+                    const rect = titleElem.getBoundingClientRect();
+                    // If it's above or slightly below viewport top
+                    if (rect.top <= 150) {
+                        currentElem = titleElem;
+                    }
+                }
+
+                // If at very top and no section breached 150px, highlight first
+                if (!currentElem && sectionTitles.length > 0) {
+                    currentElem = sectionTitles[0];
+                }
+
+                if (currentElem) {
+                    const currentId = currentElem.id;
+                    const currentSlug = currentElem.getAttribute('data-slug');
+
+                    document.querySelectorAll('.toc-link').forEach(link => {
+                        if (link.getAttribute('data-target-id') === currentId) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    });
+
+                    // The user requested that ScrollSpy ONLY handles visual highlighting,
+                    // and should NEVER update the URL automatically to prevent unwanted slugs.
+                }
+            }
+
+            window.addEventListener('scroll', updateScrollSpy);
+
+            // Handle Sidebar Nav Clicks
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const target = item.getAttribute('data-target');
+
+                    // Don't let switchTab push the URL, we'll do it cleanly here
+                    switchTab(target, null, false);
+
+                    // Manually push clean base route
+                    if (reverseRoutes[target]) {
+                        history.pushState({ targetId: target, sectionSlug: null }, null, `#/${reverseRoutes[target]}`);
+                        lastReportedSlug = null; // Reset so scrollspy can trigger cleanly later
+                    }
+
+                    updateTOC(target);
+
+                    // Close mobile sidebar if open
+                    if (window.innerWidth <= 900) {
+                        if (sidebar) sidebar.classList.remove('open');
+                        if (overlay) overlay.classList.remove('active');
+                    }
+                });
+            });
+
+            // Handle URL Routing / Back button
+            function handleRouting() {
+                const hash = window.location.hash; // e.g. #/cara-mengunduh/windows/mengunduh-di-browser-langsung
+                if (hash && hash.startsWith('#/')) {
+                    const parts = hash.substring(2).split('/');
+                    if (parts.length >= 2) {
+                        const path = parts[0] + '/' + parts[1];
+                        const sectionSlug = parts.length >= 3 ? parts[2] : null;
+                        const targetId = routes[path];
+
+                        if (targetId) {
+                            switchTab(targetId, sectionSlug, false);
+                            updateTOC(targetId, sectionSlug);
+                            return;
+                        }
+                    }
+                }
+
+                // Default fallback if no valid hash
+                const initialActive = document.querySelector('.nav-item.active') || navItems[0];
+                if (initialActive) {
+                    const target = initialActive.getAttribute('data-target');
+                    switchTab(target, null, true); // Push URL so browser gets the default URL instead of nothing
+                    updateTOC(target);
+                }
+            }
+
+            // Init routing on load
+            handleRouting();
+
+            // Listen for browser navigation (back/forward)
+            window.addEventListener('popstate', handleRouting);
+
+            // Mobile Hamburger Logic
+            if (hamburger && sidebar && overlay) {
+                hamburger.addEventListener('click', () => {
+                    sidebar.classList.toggle('open');
+                    overlay.classList.toggle('active');
+                });
+
+                overlay.addEventListener('click', () => {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('active');
+                });
+            }
+
+            // Theme Toggle Logic
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const iconDark = document.getElementById('theme-icon-dark');
+            const iconLight = document.getElementById('theme-icon-light');
+
+            const savedTheme = localStorage.getItem('wan-db-doc-theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light-mode');
+                iconLight.style.display = 'none';
+                iconDark.style.display = 'block';
+            }
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('light-mode');
+                    if (document.documentElement.classList.contains('light-mode')) {
+                        localStorage.setItem('wan-db-doc-theme', 'light');
+                        iconLight.style.display = 'none';
+                        iconDark.style.display = 'block';
+                    } else {
+                        localStorage.setItem('wan-db-doc-theme', 'dark');
+                        iconLight.style.display = 'block';
+                        iconDark.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
